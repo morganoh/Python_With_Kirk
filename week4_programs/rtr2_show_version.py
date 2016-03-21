@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-""" use paramiko to sne cmd to RTR2 """
+""" use paramiko to send cmd to RTR2 """
 
 
 
