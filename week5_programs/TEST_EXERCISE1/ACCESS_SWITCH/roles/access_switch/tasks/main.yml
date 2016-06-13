@@ -1,0 +1,8 @@
+---
+- name: Generate Configuration File
+  template: src=access_switch1.j2 dest=/home/mohalloran/TEST_EXERCISE1/CFGS/{{item.hostname}}.txt
+  with_items: access_switches
+
+
+
+ 

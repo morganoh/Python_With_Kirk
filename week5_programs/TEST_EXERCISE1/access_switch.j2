@@ -1,0 +1,32 @@
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+!
+hostname {{item.hostname}}
+!
+logging buffered 32000
+no logging console
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ switchport mode access
+ spanning-tree portfast
+!
+interface Vlan1
+ ip address {{item.ip_addr}} 255.255.255.240 
+ no ip route-cache
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+end
