@@ -1,0 +1,19 @@
+---
+
+- name: Exercise 1 - Configure 3 vlans on the arista switches (VLAN ID && VLAN Names)
+  hosts: arista
+
+  tasks:
+    - name: create VLANs 
+      eos_vlan: name={{ item.vlan_name }} vlanid={{ item.vlan_id }}
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+      with_items:
+        - {vlan_name: TEST, vlan_id: 105}
+        - {vlan_name: PROD, vlan_id: 205}
+        - {vlan_name: R&D, vlan_id: 305}       
+
+

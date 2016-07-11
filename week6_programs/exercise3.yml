@@ -1,0 +1,13 @@
+---
+- name: configure primary Ethernet Interface to Trunk
+  hosts: arista
+
+  tasks:
+    - name: Configure Eth4 to Trunk
+      eos_switchport: name=Ethernet4 mode=trunk trunk_native_vlan=1 trunk_allowed_vlans=105,205,305
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+
