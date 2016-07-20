@@ -1,0 +1,18 @@
+---
+
+- name: Arista Cleanup
+  hosts: arista
+
+  tasks:
+    - name: Remove VLANs
+      eos_vlan: name={{ item.name }} vlanid={{ item.vlanid }} state=absent
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }} 
+            port={{ eapi_port }}
+            transport=https
+      with_items:
+        - {name: BLUE, vlanid: 100}
+        - {name: RED, vlanid: 200}
+        - {name: GREEN, vlanid: 300}
+
